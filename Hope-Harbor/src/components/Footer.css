@@ -1,0 +1,16 @@
+.footer-container{
+  background: rgba(0,0,0,0.7)url('https://www.donatelife.org.in/wp-content/uploads/2024/09/27-history-of-organ-donation.jpg');
+  background-size: 100% 100%;
+  background-blend-mode: darken;
+ 
+} 
+
+.Flink{
+  text-decoration: none;
+  color: white;
+  font-size:larger;
+}
+
+.Flink:hover{
+  color:rgb(204, 51, 51)
+}

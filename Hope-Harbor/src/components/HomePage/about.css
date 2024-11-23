@@ -1,0 +1,12 @@
+.about-img{
+  width:320px ;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
+  
+}
+
+.about-link{
+  text-decoration: none;
+  color: white;
+}

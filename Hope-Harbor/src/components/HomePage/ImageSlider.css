@@ -1,0 +1,27 @@
+.imgSlider{
+ 
+  height: 480px;
+  background-image: url('https://media.assettype.com/sentinelassam-english%2F2024-07%2F515997f6-5bbc-495a-935b-03f0cea34914%2FOrgan%20copy.jpg?w=1024&auto=format%2Ccompress&fit=max');
+  background-size: 100% 100%;
+  object-fit: fill;
+  animation: changeImage 25s linear infinite;
+}
+@keyframes changeImage {
+  0%{
+    background-image:url('https://media.assettype.com/sentinelassam-english%2F2024-07%2F515997f6-5bbc-495a-935b-03f0cea34914%2FOrgan%20copy.jpg?w=1024&auto=format%2Ccompress&fit=max') ;
+  }
+  25%{
+    background-image:url('https://i.pinimg.com/736x/b5/10/70/b510704a4747eacd9afaab035a18b757.jpg') ;
+  }
+  50%{
+    background-image:url('https://dehdan.org/ejournal/sepoct2019/youth-organ-donation.jpg') ;
+  }
+  75%{
+    background-image:url('https://www.kimssunshine.co.in/wp-content/uploads/2024/08/You-Can-Give-Someone-The-Gift-of-Life-Understanding-Organ-Donations-Vital-Role.jpg') ;
+  }
+  100%{
+    background-image:url('https://media.assettype.com/sentinelassam-english%2F2024-07%2F515997f6-5bbc-495a-935b-03f0cea34914%2FOrgan%20copy.jpg?w=1024&auto=format%2Ccompress&fit=max') ;
+  }
+
+}
+
