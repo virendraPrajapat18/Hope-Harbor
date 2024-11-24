@@ -23,7 +23,7 @@
     </div>
 
   
-    <div clclassNameass="mb-8">
+    <div className="mb-8">
       <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
       <ul className="flex flex-col items-center gap-1 text-base">
         <li><NavLink to="/" className="Flink ">Home</NavLink></li>
@@ -44,9 +44,9 @@
     </div>
 
     
-    <div class="mb-8">
-      <h3 class="text-xl font-semibold mb-2">Stay Connected</h3>
-      <div class="flex justify-center space-x-4 ">
+    <div className="mb-8">
+      <h3 className="text-xl font-semibold mb-2">Stay Connected</h3>
+      <div className="flex justify-center space-x-4 ">
         <a href="#" className="Flink"><FaFacebook /></a>
         <a href="#" className="Flink"><FaSquareXTwitter /></a>
         <a href="#" className="Flink"><FaInstagram /></a>
@@ -58,7 +58,7 @@
 </div>
 
 
- <div class="border-t border-white/50 pt-4 text-base font-light flex justify-center items-center flex-col">
+ <div className="border-t border-white/50 pt-4 text-base font-light flex justify-center items-center flex-col">
    <div>© 2024 Hope Harbor. All rights reserved.</div>
     <div>"Be the beacon of hope for someone in need."</div>
     </div>
