@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './Registration.css'
 import { useRef } from "react";
 
@@ -6,7 +6,7 @@ const RegistrationPage=()=>{
 
 
 
-
+const [error,setError] = useState("");
 
 
   //Personal Details
@@ -14,7 +14,7 @@ const nameRef = useRef();
 const ageRef = useRef();
 const genderRef = useRef();
 const bloodGroupRef = useRef();
-const organDonateRef = useRef();
+// const organDonateRef = useRef();
 const aadharNoRef = useRef();
 const addressRef = useRef();
 const cityRef = useRef();
@@ -33,14 +33,14 @@ const EstateRef = useRef();
 const EemailRef = useRef();
 const EphoneRef = useRef();
 
-const handleSubmit=(e)=>{
+const handleSubmit= async (e)=>{
    e.preventDefault();
 
  
 
   
 
-   const selectedOrgans = Array.from(organDonateRef.current.querySelectorAll("input[name='organs']:checked")).map((checkbox)=> checkbox.value);
+  //  const selectedOrgans = Array.from(organDonateRef.current.querySelectorAll("input[name='organs']:checked")).map((checkbox)=> checkbox.value);
 //  console.log(selectedOrgans)
 
 
@@ -50,7 +50,7 @@ const handleSubmit=(e)=>{
      age : ageRef.current.value,
      gender:genderRef.current.querySelector("input[name='gender']:checked")?.value,
      bloodGroup:bloodGroupRef.current.value,
-     organDonate:selectedOrgans,
+    //  organDonate:selectedOrgans,
      aadhar:aadharNoRef.current.value,
      address:addressRef.current.value,
      city:cityRef.current.value,
@@ -79,44 +79,69 @@ const handleSubmit=(e)=>{
 
   //  console.log(formData);
 
-   const storedData = JSON.parse(localStorage.getItem("registrations")) || [];
-   storedData.push(formData);
-   localStorage.setItem("registrations",JSON.stringify(storedData));
+  const response = await fetch("http://localhost:5002/register",{
+    method: "POST",
+    body : JSON.stringify(formData),
+    headers:{
+      "Content-Type": "application/json",
+    }
+  })
 
+  const result = await response.json();
+
+  if(!response.ok){
+    // alert("Error submitting form:",error);
+    //  console.log(result.error);
+    // alert(response.data.message);
+    setError(result.error);
+  }
+  if(response.ok){
+    setError("");
+    alert("Form submitted successfully !");
+    nameRef.current.value=""
+    ageRef.current.value=""
+   //  genderRef.current.value=""
+    bloodGroupRef.current.value=""
+   //  organDonateRef.current.value=""
+    aadharNoRef.current.value=""
+    addressRef.current.value=""
+    cityRef.current.value=""
+    districtRef.current.value=""
+    pincodeRef.current.value=""
+    stateRef.current.value=""
+    emailRef.current.value=""
+    phoneRef.current.value=""
   
+     
+  
+    EnameRef.current.value=""
+    ErelationshipRef.current.value=""
+    EaddressRef.current.value=""
+    EcityRef.current.value=""
+    EstateRef.current.value=""
+    EemailRef.current.value=""
+    EphoneRef.current.value=""
+  
+    const genderInputs = genderRef.current.querySelectorAll("input[name='gender']");
+    genderInputs.forEach((radio) => (radio.checked = false));
+  
+    // const organCheckboxes = organDonateRef.current.querySelectorAll("input[name='organs']");
+    // organCheckboxes.forEach((checkbox) => (checkbox.checked = false));
+    // alert("Form submitted successfully !");
+  }
+
+
+
+  //  const storedData = JSON.parse(localStorage.getItem("registrations")) || [];
+  //  storedData.push(formData);
+  //  localStorage.setItem("registrations",JSON.stringify(storedData));
+
+
 
    
-   nameRef.current.value=""
-   ageRef.current.value=""
-  //  genderRef.current.value=""
-   bloodGroupRef.current.value=""
-  //  organDonateRef.current.value=""
-   aadharNoRef.current.value=""
-   addressRef.current.value=""
-   cityRef.current.value=""
-   districtRef.current.value=""
-   pincodeRef.current.value=""
-   stateRef.current.value=""
-   emailRef.current.value=""
-   phoneRef.current.value=""
 
-    
 
-   EnameRef.current.value=""
-   ErelationshipRef.current.value=""
-   EaddressRef.current.value=""
-   EcityRef.current.value=""
-   EstateRef.current.value=""
-   EemailRef.current.value=""
-   EphoneRef.current.value=""
-
-   const genderInputs = genderRef.current.querySelectorAll("input[name='gender']");
-   genderInputs.forEach((radio) => (radio.checked = false));
-
-   const organCheckboxes = organDonateRef.current.querySelectorAll("input[name='organs']");
-   organCheckboxes.forEach((checkbox) => (checkbox.checked = false));
-
-   alert("Form submitted!");
+ 
 }
 
 
@@ -125,6 +150,7 @@ const handleSubmit=(e)=>{
   return (
     <>
     <div className="register h-[100%] w-screen flex justify-center items-center flex-col">
+      {error && <div className="alert alert-danger mt-10 rounded-full mx-5" role="alert">{error}</div>}
       <div>
     <h2 className="text-4xl mt-3" >Registration Form</h2>
     </div>
@@ -138,7 +164,7 @@ const handleSubmit=(e)=>{
 
           <div >
             <label className="font-semibold text-xl mt-4" htmlFor="name">Name : </label>
-            <input required
+            <input 
             ref={nameRef}
             className="border-2  bg-transparent text-base mx-3 px-2 rounded-2xl py-1"
             type="text" id="name"  placeholder="Enter your Name "  />
@@ -149,7 +175,7 @@ const handleSubmit=(e)=>{
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="age">Age : </label>
-            <input required
+            <input 
              ref={ageRef}
             type="text" id="age" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="above 18" />
           </div>
@@ -182,7 +208,7 @@ const handleSubmit=(e)=>{
               <option value="AB-">AB-</option>
             </select>
           </div>
-
+{/* 
           <div ref={organDonateRef} className="flex my-3">
             <label className="font-semibold text-xl mt-3" htmlFor="organ">Organ that I wish to Donate :</label>
 
@@ -213,11 +239,11 @@ const handleSubmit=(e)=>{
 
             </div>
 
-          </div>
+          </div> */}
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="aadhar">Aadhar number : </label>
-            <input required
+            <input 
             ref={aadharNoRef}
             type="text" id="aadhar" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Aadhar card number "  />
           </div>
@@ -231,42 +257,42 @@ const handleSubmit=(e)=>{
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="city">City : </label>
-            <input
+            <input 
             ref={cityRef}
             type="text" id="city" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter City Name "  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="dist">District : </label>
-            <input
+            <input 
             ref={districtRef}
             type="text" id="dist" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter District"  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="pincode">Pincode : </label>
-            <input
+            <input 
             ref={pincodeRef}
             type="text" id="pincode" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Pincode number"  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="state">State : </label>
-            <input
+            <input 
             ref={stateRef}
             type="text" id="state" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter State"  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="mail">Email Address : </label>
-            <input
+            <input  
             ref={emailRef}
             type="email" id="mail" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Email Id"  />
           </div>
           
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="phone">Phone : </label>
-            <input required
+            <input 
             ref={phoneRef}
             type="number" id="phone" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Phone number"  />
           </div>
@@ -281,15 +307,15 @@ const handleSubmit=(e)=>{
            
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Ename"> Name : </label>
-            <input required
+            <input 
             ref={EnameRef}
             type="text" id="Ename" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Your Name "  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="relationship">Relationship :</label>
-            <select ref={ErelationshipRef} requiredclassName="bg-transparent text-base rounded-2xl py-1 mx-3 px-2 " name="relationship" id="relationship">
-              <option  value="" disabled >Select</option>
+            <select ref={ErelationshipRef}  className="bg-transparent text-base rounded-2xl py-1 mx-3 px-2 " name="relationship" id="relationship">
+              <option  value=""  disabled >Select</option>
               <option value="father">Father</option>
               <option value="mother">Mother</option>
               <option value="husband">Husband</option>
@@ -333,14 +359,14 @@ const handleSubmit=(e)=>{
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Email">Email Address : </label>
-            <input
+            <input 
             ref={EemailRef}
             type="email" id="Email" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Email Id"  />
           </div>
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Ephone">Phone : </label>
-            <input required
+            <input 
             ref={EphoneRef}
             type="number" id="Ephone" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Phone number"  />
           </div>
