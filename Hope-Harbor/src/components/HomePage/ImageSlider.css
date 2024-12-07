@@ -4,7 +4,7 @@
   background-image: url('https://media.assettype.com/sentinelassam-english%2F2024-07%2F515997f6-5bbc-495a-935b-03f0cea34914%2FOrgan%20copy.jpg?w=1024&auto=format%2Ccompress&fit=max');
   background-size: 100% 100%;
   object-fit: fill;
-  animation: changeImage 25s linear infinite;
+  animation: changeImage 20s linear infinite;
 }
 @keyframes changeImage {
   0%{

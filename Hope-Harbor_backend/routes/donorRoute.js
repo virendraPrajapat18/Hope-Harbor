@@ -36,7 +36,8 @@ try{
       message: "Registration successful.",
       data: newRegistration
      });
-     console.log(newRegistration);
+     
+     
     }catch (error) {
     console.error(error);
     res.status(500).json({ 
@@ -45,6 +46,32 @@ try{
      });
   }
 
+})
+
+router.post('/verify', async(req,res)=>{
+  const {name,aadhar} = req.body;
+  // const aadhar = detailsForVerification.aadhar;
+
+  try{
+    const donor = await Registration.findOne({"personalDetails.aadhar":aadhar});
+
+    if(!donor){
+      return res.status(404).json({
+        message:"Person not Registered !" 
+      })
+    }
+
+    return res.status(200).json({
+      donorDetails : donor,
+      message : "Person is registered !"
+    })
+    console.log(data);
+
+  } catch(error){
+     return res.status(500).json({
+      message : "Server error. Please try again later."
+     })
+  }
 })
 
 module.exports = router;

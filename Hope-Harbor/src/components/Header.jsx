@@ -11,8 +11,13 @@ const Header=()=>{
     <>
       <header className=" bg-red-700 shadow sticky z-50 top-0 w-screen px-5 py-2 ">
         <nav className=" border-gray-500 text-white  flex flex-wrap justify-between h-14 items-center  max-w-screen" >
+           <div className="flex items-center gap-2">
+            <div className="logo-container">
+              <img className="logo-image " src="hope-Harbor-Logo.png" alt="" />
+            </div>
+           <h1 className="text-3xl font-bold ">Hope-Harbor</h1>
+           </div>
            
-            <h1 className="text-3xl font-bold ">Hope-Harbor</h1>
            
               <ul className=" navbar flex items-center justify-between relative text-xl font-medium ">
                 <li>

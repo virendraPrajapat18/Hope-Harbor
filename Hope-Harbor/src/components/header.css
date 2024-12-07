@@ -2,3 +2,17 @@
   text-decoration: none;
   color:white
 }
+
+.logo-container{
+    height: 50px;
+    width: 50px;
+    gap: 0.5rem;
+}
+
+.logo-image{
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  object-fit:cover;
+  object-position: center;
+}
