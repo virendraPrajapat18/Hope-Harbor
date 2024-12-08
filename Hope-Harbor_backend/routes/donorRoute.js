@@ -57,7 +57,7 @@ router.post('/verify', async(req,res)=>{
 
     if(!donor){
       return res.status(404).json({
-        message:"Person not Registered !" 
+        message:"Person not Registered ! Please check the details or register first." 
       })
     }
 

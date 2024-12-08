@@ -1,6 +1,8 @@
 import React from "react";
 import './Verification.css';
 import { useRef ,useState } from "react";
+import PersonsDetails from "./personsDetails";
+import {NavLink} from "react-router-dom"
 
 const VerifivationPage= ()=>{
 
@@ -33,10 +35,10 @@ const VerifivationPage= ()=>{
 
     if(response.ok){
       setMessage({
-        type: " Success",
-        text : `Verification successful ! Registered user:${data.donorDetails.personalDetails.name}`,
+        type: "Success",
+        text : `Verification successful ! Registered user : ${data.donorDetails.personalDetails.name}`,
       })
-      setUserData(data.personalDetails);
+      setUserData(data);
       console.log(response.donorDetails);
      
     }else{
@@ -66,7 +68,7 @@ const VerifivationPage= ()=>{
   return (
     <>
      
-     <div className="verify-container flex h-screen w-screen items-center justify-center" >
+     <div className="verify-container flex flex-col h-screen w-screen items-center justify-center" >
         <div className="border-2 border-red-700 p-20 rounded-xl " >
           <form
          onSubmit={handleVerification}
@@ -74,7 +76,7 @@ const VerifivationPage= ()=>{
 
             <input
             ref={nameForVerify}
-            required className=" outline-none border-2 border-red-700 rounded-full py-3 px-5 text-xl bg-transparent
+             className=" outline-none border-2 border-red-700 rounded-full py-3 px-5 text-xl bg-transparent
               placeholder:text-gray-400
             " type="text" placeholder="Enter your Name"/>
 
@@ -90,9 +92,38 @@ const VerifivationPage= ()=>{
 
           </form>
 
-          
+         
+
 
         </div>
+
+
+        <div>
+
+        {message && (
+            <div
+              className={`mt-5 m-4 p-2 text-lg rounded ${
+                message.type === "Success"
+                    ? "bg-green-200 text-green-700"
+                    : "bg-red-200 text-red-700"
+              }`}
+            >
+              {message.text}
+            </div>
+          
+          )}
+          
+          <div className="flex justify-center">
+          {userData && (
+              <NavLink to="/personsDetails"
+              state={{ userData }} 
+               className="msg px-3 py-2 bg-red-700 rounded-3xl">
+                 Show Deatils
+              </NavLink>
+            )}
+          </div>
+
+          </div>
 
       </div>
     </>

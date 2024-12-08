@@ -9,6 +9,7 @@ import HomePage from './components/HomePage/HomePage.jsx';
 import RegistrationPage from './components/RegistrationPage.jsx';
 import Layout from './components/Layout.jsx';
 import VerifivationPage from './components/VerificationPage.jsx';
+import PersonsDetails from './components/personsDetails.jsx';
 
 
 const router=createBrowserRouter(
@@ -16,7 +17,9 @@ const router=createBrowserRouter(
     <Route path='/' element={<Layout/>} >
         <Route path='' element={<HomePage/>} />
         <Route path='register' element={<RegistrationPage/>} />
-        <Route path='verify' element={<VerifivationPage/>} />
+        <Route path='verify' element={<VerifivationPage/>}/>
+         <Route path='personsDetails' element={<PersonsDetails/>} />
+         
       
 
     </Route>
@@ -28,5 +31,5 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
      <RouterProvider router={router} />
     
-  </StrictMode>,
+  </StrictMode>
 )
