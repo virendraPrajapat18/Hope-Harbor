@@ -10,6 +10,7 @@ import RegistrationPage from './components/RegistrationPage.jsx';
 import Layout from './components/Layout.jsx';
 import VerifivationPage from './components/VerificationPage.jsx';
 import PersonsDetails from './components/personsDetails.jsx';
+import LoginPage from './components/LoginPage.jsx';
 
 
 const router=createBrowserRouter(
@@ -19,7 +20,7 @@ const router=createBrowserRouter(
         <Route path='register' element={<RegistrationPage/>} />
         <Route path='verify' element={<VerifivationPage/>}/>
          <Route path='personsDetails' element={<PersonsDetails/>} />
-         
+         <Route path="/login" element={<LoginPage />} />
       
 
     </Route>

@@ -17,9 +17,9 @@ const bloodGroupRef = useRef();
 // const organDonateRef = useRef();
 const aadharNoRef = useRef();
 const addressRef = useRef();
-const cityRef = useRef();
-const districtRef = useRef();
-const pincodeRef = useRef();
+// const cityRef = useRef();
+// const districtRef = useRef();
+// const pincodeRef = useRef();
 const stateRef = useRef();
 const emailRef = useRef();
 const phoneRef = useRef();
@@ -28,8 +28,8 @@ const phoneRef = useRef();
 const EnameRef = useRef();
 const ErelationshipRef = useRef();
 const EaddressRef = useRef();
-const EcityRef = useRef();
-const EstateRef = useRef();
+// const EcityRef = useRef();
+// const EstateRef = useRef();
 const EemailRef = useRef();
 const EphoneRef = useRef();
 
@@ -51,11 +51,11 @@ const handleSubmit= async (e)=>{
      gender:genderRef.current.querySelector("input[name='gender']:checked")?.value,
      bloodGroup:bloodGroupRef.current.value,
     //  organDonate:selectedOrgans,
-     aadhar:aadharNoRef.current.value,
+     aadhar:aadharNoRef.current.value.replace(/\s+/g,""),
      address:addressRef.current.value,
-     city:cityRef.current.value,
-     district:districtRef.current.value,
-     pincode:pincodeRef.current.value,
+    //  city:cityRef.current.value,
+    //  district:districtRef.current.value,
+    //  pincode:pincodeRef.current.value,
      state:stateRef.current.value,
      email:emailRef.current.value,
      phone:phoneRef.current.value,
@@ -65,8 +65,8 @@ const handleSubmit= async (e)=>{
      Ename:EnameRef.current.value,
      Erelationship:ErelationshipRef.current.value,
      Eaddress:EaddressRef.current.value,
-     Ecity:EcityRef.current.value,
-     Estate:EstateRef.current.value,
+    //  Ecity:EcityRef.current.value,
+    //  Estate:EstateRef.current.value,
      Eemail:EemailRef.current.value,
      Ephone:EphoneRef.current.value,
    }
@@ -92,8 +92,8 @@ const handleSubmit= async (e)=>{
   if(!response.ok){
     // alert("Error submitting form:",error);
     //  console.log(result.error);
-    // alert(response.data.message);
-    setError(result.error);
+    // alert(response.data.message); 
+    setError(result.message);
   }
   if(response.ok){
     setError("");
@@ -105,9 +105,9 @@ const handleSubmit= async (e)=>{
    //  organDonateRef.current.value=""
     aadharNoRef.current.value=""
     addressRef.current.value=""
-    cityRef.current.value=""
-    districtRef.current.value=""
-    pincodeRef.current.value=""
+    // cityRef.current.value=""
+    // districtRef.current.value=""
+    // pincodeRef.current.value=""
     stateRef.current.value=""
     emailRef.current.value=""
     phoneRef.current.value=""
@@ -117,8 +117,8 @@ const handleSubmit= async (e)=>{
     EnameRef.current.value=""
     ErelationshipRef.current.value=""
     EaddressRef.current.value=""
-    EcityRef.current.value=""
-    EstateRef.current.value=""
+    // EcityRef.current.value=""
+    // EstateRef.current.value=""
     EemailRef.current.value=""
     EphoneRef.current.value=""
   
@@ -149,7 +149,7 @@ const handleSubmit= async (e)=>{
 
   return (
     <>
-    <div className="register h-[100%] w-screen flex justify-center items-center flex-col">
+    <div className="register text-red-700 h-[100%] w-screen flex justify-center items-center flex-col">
       {error && <div className="alert alert-danger mt-10 rounded-full mx-5" role="alert">{error}</div>}
       <div>
     <h2 className="text-4xl mt-3" >Registration Form</h2>
@@ -165,6 +165,7 @@ const handleSubmit= async (e)=>{
           <div >
             <label className="font-semibold text-xl mt-4" htmlFor="name">Name : </label>
             <input 
+            required
             ref={nameRef}
             className="border-2  bg-transparent text-base mx-3 px-2 rounded-2xl py-1"
             type="text" id="name"  placeholder="Enter your Name "  />
@@ -176,6 +177,7 @@ const handleSubmit= async (e)=>{
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="age">Age : </label>
             <input 
+            required
              ref={ageRef}
             type="text" id="age" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="above 18" />
           </div>
@@ -244,6 +246,7 @@ const handleSubmit= async (e)=>{
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="aadhar">Aadhar number : </label>
             <input 
+            required
             ref={aadharNoRef}
             type="text" id="aadhar" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Aadhar card number "  />
           </div>
@@ -251,30 +254,31 @@ const handleSubmit= async (e)=>{
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="address">Address : </label>
             <input 
+            required
             ref={addressRef}
             type="text" id="address" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Address "  />
           </div>
 
-          <div>
+          {/* <div>
             <label className="font-semibold text-xl mt-3" htmlFor="city">City : </label>
             <input 
             ref={cityRef}
             type="text" id="city" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter City Name "  />
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             <label className="font-semibold text-xl mt-3" htmlFor="dist">District : </label>
             <input 
             ref={districtRef}
             type="text" id="dist" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter District"  />
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             <label className="font-semibold text-xl mt-3" htmlFor="pincode">Pincode : </label>
             <input 
             ref={pincodeRef}
             type="text" id="pincode" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Pincode number"  />
-          </div>
+          </div> */}
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="state">State : </label>
@@ -292,7 +296,8 @@ const handleSubmit= async (e)=>{
           
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="phone">Phone : </label>
-            <input 
+            <input
+            required 
             ref={phoneRef}
             type="number" id="phone" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Phone number"  />
           </div>
@@ -308,6 +313,7 @@ const handleSubmit= async (e)=>{
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Ename"> Name : </label>
             <input 
+            required
             ref={EnameRef}
             type="text" id="Ename" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Your Name "  />
           </div>
@@ -343,19 +349,19 @@ const handleSubmit= async (e)=>{
             type="text" id="Eaddress" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Address "  />
           </div>
 
-          <div>
+          {/* <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Ecity">City : </label>
             <input
             ref={EcityRef}
             type="text" id="Ecity" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter City Name "  />
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Estate">State : </label>
             <input 
             ref={EstateRef}
             type="text" id="Estate" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter State"  />
-          </div>
+          </div> */}
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Email">Email Address : </label>
@@ -367,6 +373,7 @@ const handleSubmit= async (e)=>{
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Ephone">Phone : </label>
             <input 
+            required
             ref={EphoneRef}
             type="number" id="Ephone" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Phone number"  />
           </div>

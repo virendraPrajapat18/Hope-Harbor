@@ -6,6 +6,54 @@ const router = express.Router();
 app.use(express.json())
 
 
+const jwt = require("jsonwebtoken");
+
+
+
+const users = [
+  {
+    username: "healthCareAdmin",
+    password: "healthCare@2024",  
+  },
+  {
+    username: "DrAdminPortal",
+    password: "adminAccess@2024",
+  },
+];
+
+
+router.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = users.find((user) => user.username === username);
+    if (!user) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    const isPasswordValid = password === user.password;;    //await compare(password, user.password)
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    // Generate JWT Token
+    const token = jwt.sign({ username: user.username },  process.env.JWT_SECRET || "defaultSecretKey", {
+      expiresIn: "1h",
+    });
+
+    res.status(200).json({ token, message: "Login successful!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error. Please try again later." });
+  }
+});
+
+
+
+
+
+
+
 router.post("/register", async (req, res) => {
 
 
@@ -14,17 +62,17 @@ router.post("/register", async (req, res) => {
     
 try{
     //Check for existing data
-    // const existing = await Registration.findOne({
-    //   "personalDetails.aadhar": personalDetails.aadhar,
-    // });
-    // if (existing) {
-    //   return res.status(400).json({ message: "Aadhar number is already registered." });
-    // }
+    const existing = await Registration.findOne({
+      "personalDetails.aadhar": personalDetails.aadhar,
+    });
+    if (existing) {
+      return res.status(400).json({ message: "Aadhar number is already registered." });
+    }
 
-    // const age = personalDetails.age;
-    // if(age<18){
-    //  return res.status(400).json({ message: "You must be 18 or older to register." });
-    // }
+    const age = personalDetails.age;
+    if(age<18){
+     return res.status(400).json({ message: "You must be 18 or older to register." });
+    }
 
     const newRegistration = await Registration.create ({
       personalDetails,
@@ -53,7 +101,9 @@ router.post('/verify', async(req,res)=>{
   // const aadhar = detailsForVerification.aadhar;
 
   try{
-    const donor = await Registration.findOne({"personalDetails.aadhar":aadhar});
+    
+    const sanitizedAadhar = aadhar.replace(/\s+/g, "");
+    const donor = await Registration.findOne({"personalDetails.aadhar":sanitizedAadhar});
 
     if(!donor){
       return res.status(404).json({

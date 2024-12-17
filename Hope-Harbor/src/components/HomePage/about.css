@@ -1,6 +1,6 @@
 .about-img{
-  width:320px ;
-  height: 320px;
+  width:20rem ;
+  height: 20rem;
   object-fit: cover;
   object-position: center;
   
@@ -9,4 +9,12 @@
 .about-link{
   text-decoration: none;
   color: white;
+}
+
+.about{
+  background-color: #FAF9F6;
+}
+
+.about-container{
+  background-color: #FAF9F6;
 }

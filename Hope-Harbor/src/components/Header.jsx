@@ -21,13 +21,14 @@ const Header=()=>{
            
               <ul className=" navbar flex items-center justify-between relative text-xl font-medium ">
                 <li>
-                  <NavLink to="/" className={(isActive)=>` link mx-6  p-2 hover:bg-red-900  rounded-full px-4  ` } >Home</NavLink>
+                  <NavLink to="/" className={(isActive)=>` link mx-6 text-2xl  p-2 hover:bg-red-800 outline-none  rounded-full px-4  ` } >Home</NavLink>
                 </li>
                 <li>
-                  <NavLink to="register" className={(isActive)=> `link mx-6 p-2 hover:bg-red-900 rounded-full px-4 `}   >Register</NavLink>
+                  <NavLink to="register" className={(isActive)=> `link mx-6 text-2xl p-2 hover:bg-red-800 rounded-full px-4 `}   >Register</NavLink>
                 </li>
                 <li>
-                  <NavLink to="verify" className= {(isActive)=> `link mx-6 p-2 hover:bg-red-900 rounded-full px-4 ` }   >Verify</NavLink>
+                  <NavLink to="verify" className= {(isActive)=> `link mx-6 text-2xl p-2 hover:bg-red-800 rounded-full px-4
+                    ` }   >Verify</NavLink>
                 </li>
               </ul>
             
@@ -40,3 +41,4 @@ const Header=()=>{
 }
 
 export default Header;
+

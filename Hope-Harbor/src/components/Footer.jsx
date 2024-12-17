@@ -47,9 +47,9 @@
     <div className="mb-8">
       <h3 className="text-xl font-semibold mb-2">Stay Connected</h3>
       <div className="flex justify-center space-x-4 ">
-        <a href="#" className="Flink"><FaFacebook /></a>
-        <a href="#" className="Flink"><FaSquareXTwitter /></a>
-        <a href="#" className="Flink"><FaInstagram /></a>
+        <a  className="Flink"><FaFacebook /></a>
+        <a  className="Flink"><FaSquareXTwitter /></a>
+        <a  className="Flink"><FaInstagram /></a>
       </div>
     </div>
 

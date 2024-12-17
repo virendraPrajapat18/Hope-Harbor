@@ -1,29 +1,23 @@
 const mongoose = require('mongoose');
 
 const EmergencyPersonSchema = new mongoose.Schema({
-  Ename: { type: String, required: true },
-  Erelationship: { type: String, required: true },
-  Eaddress: { type: String ,required: true},   
-  Ecity: { type: String },  ////
-  Estate: { type: String }, ////
-  Eemail: { type: String, required: true },
-  Ephone: { type: String, required: true },
+  Ename: { type: String  },
+  Erelationship: { type: String  },
+  Eaddress: { type: String },   
+  Eemail: { type: String },
+  Ephone: { type: String },
 });
 
 const PersonalDetailsSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  age: { type: Number, required: true, min: 18 },
-  gender: { type: String, required: true },
-  bloodGroup: { type: String },  ////
-  // organDonate: { type: [String], required: true },
-  aadhar: { type: String, required: true, unique: true, length: 12 },
-  address: { type: String, required: true },
-  city: { type: String, required: true },
-  district: { type: String, required: true },
-  pincode: { type: String,required: true},  
-  state: { type: String,required: true },   
-  email: { type: String, required: true, unique: true },
-  phone: { type: String, required: true },
+  name: { type: String  },
+  age: { type: Number },
+  gender: { type: String },
+  bloodGroup: { type: String },  
+  aadhar: { type: String},
+  address: { type: String },  
+  state: { type: String },   
+  email: { type: String  },
+  phone: { type: String  },
 });
 
 const donorSchema = new mongoose.Schema({

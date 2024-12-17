@@ -16,12 +16,12 @@ const Cards=()=>{
 
   return (
     <>
-    <div className="cards w-screen my-10">
-    <div className="w-3/4 m-auto">
-      <div className="">
+    <div className="cards w-screen py-24">
+    <div className="w-3/4 m-auto ">
+      <div className=" ">
       <Slider {...settings}>
        
-          <div className=" bg-white h-[470px]  text-black card-container ">
+          <div className=" bg-white h-[29.125rem] mb-10  text-black card-container ">
             <div className="h-48  bg-indigo-500 flex justify-center items-center ">
               <img className="img" src='https://akm-img-a-in.tosshub.com/indiatoday/images/story/202208/heart-g73484eb08_1920_1200x768.jpeg?VersionId=Pmwnx_SFkDopLJlYOa_GWEnBCD9WOKwC&size=690:388'  alt="" />
             </div>
@@ -33,7 +33,7 @@ const Cards=()=>{
 
           </div>
 
-          <div className="bg-white h-[470px] text-black card-container">
+          <div className="bg-white h-[29.125rem] mb-10 text-black card-container">
             <div className="h-48  bg-indigo-500 flex justify-center items-center">
               <img className="img" src='https://akm-img-a-in.tosshub.com/indiatoday/images/story/202108/organ-donation-4301527_1920.jpg?size=690:388'  alt="" />
             </div>
@@ -45,7 +45,7 @@ const Cards=()=>{
 
           </div>
 
-          <div className="bg-white h-[470px]  text-black card-container ">
+          <div className="bg-white h-[29.125rem] mb-10 text-black card-container ">
             <div className="h-48  bg-indigo-500 flex justify-center items-center">
               <img className="img"  src='https://madhubankidneycare.com/wp-content/uploads/2023/08/organ-donation-for-Kidney-Transplant-2048x1392.jpg'  alt="" />
             </div>
@@ -57,7 +57,7 @@ const Cards=()=>{
 
           </div>
 
-          <div className="bg-white h-[470px] text-black card-container ">
+          <div className="bg-white h-[29.125rem] mb-10 text-black card-container ">
             <div className="h-48  bg-indigo-500 flex justify-center items-center">
               <img className="img"  src='https://www.rfhospital.org/media/3241/donation-organs-banner.png'  alt="" />
             </div>
@@ -69,7 +69,7 @@ const Cards=()=>{
 
           </div>
 
-          <div className="bg-white h-[470px]  text-black card-container ">
+          <div className="bg-white h-[29.125rem] mb-10  text-black card-container ">
             <div className="h-48  bg-indigo-500 flex justify-center items-center">
               <img className="img"  src='https://www.kauveryhospital.com/wp-content/uploads/2024/07/national-organ-donation-day-tamil-nadu-leading-the-way-in-india.jpg'  alt="" />
             </div>
@@ -81,7 +81,7 @@ const Cards=()=>{
 
           </div>
 
-          <div className="bg-white h-[470px]  text-black  card-container">
+          <div className="bg-white h-[29.125rem] mb-10  text-black   card-container">
             <div className="h-48  bg-indigo-500 flex justify-center items-center">
               <img className="img"  src='https://i0.wp.com/nephroplus.com/wp-content/uploads/2022/12/300x300-4.jpg?w=300&ssl=1'  alt="" />
             </div>
