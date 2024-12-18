@@ -14,12 +14,8 @@ const nameRef = useRef();
 const ageRef = useRef();
 const genderRef = useRef();
 const bloodGroupRef = useRef();
-// const organDonateRef = useRef();
 const aadharNoRef = useRef();
 const addressRef = useRef();
-// const cityRef = useRef();
-// const districtRef = useRef();
-// const pincodeRef = useRef();
 const stateRef = useRef();
 const emailRef = useRef();
 const phoneRef = useRef();
@@ -28,8 +24,6 @@ const phoneRef = useRef();
 const EnameRef = useRef();
 const ErelationshipRef = useRef();
 const EaddressRef = useRef();
-// const EcityRef = useRef();
-// const EstateRef = useRef();
 const EemailRef = useRef();
 const EphoneRef = useRef();
 
@@ -37,25 +31,14 @@ const handleSubmit= async (e)=>{
    e.preventDefault();
 
  
-
-  
-
-  //  const selectedOrgans = Array.from(organDonateRef.current.querySelectorAll("input[name='organs']:checked")).map((checkbox)=> checkbox.value);
-//  console.log(selectedOrgans)
-
-
   
    const personalDetails = {
      name :nameRef.current.value,
      age : ageRef.current.value,
      gender:genderRef.current.querySelector("input[name='gender']:checked")?.value,
      bloodGroup:bloodGroupRef.current.value,
-    //  organDonate:selectedOrgans,
      aadhar:aadharNoRef.current.value.replace(/\s+/g,""),
      address:addressRef.current.value,
-    //  city:cityRef.current.value,
-    //  district:districtRef.current.value,
-    //  pincode:pincodeRef.current.value,
      state:stateRef.current.value,
      email:emailRef.current.value,
      phone:phoneRef.current.value,
@@ -65,8 +48,6 @@ const handleSubmit= async (e)=>{
      Ename:EnameRef.current.value,
      Erelationship:ErelationshipRef.current.value,
      Eaddress:EaddressRef.current.value,
-    //  Ecity:EcityRef.current.value,
-    //  Estate:EstateRef.current.value,
      Eemail:EemailRef.current.value,
      Ephone:EphoneRef.current.value,
    }
@@ -77,7 +58,7 @@ const handleSubmit= async (e)=>{
     EmergencyPersonDetails
    }
 
-  //  console.log(formData);
+ 
 
   const response = await fetch("http://localhost:5002/register",{
     method: "POST",
@@ -90,9 +71,6 @@ const handleSubmit= async (e)=>{
   const result = await response.json();
 
   if(!response.ok){
-    // alert("Error submitting form:",error);
-    //  console.log(result.error);
-    // alert(response.data.message); 
     setError(result.message);
   }
   if(response.ok){
@@ -100,14 +78,9 @@ const handleSubmit= async (e)=>{
     alert("Form submitted successfully !");
     nameRef.current.value=""
     ageRef.current.value=""
-   //  genderRef.current.value=""
     bloodGroupRef.current.value=""
-   //  organDonateRef.current.value=""
     aadharNoRef.current.value=""
     addressRef.current.value=""
-    // cityRef.current.value=""
-    // districtRef.current.value=""
-    // pincodeRef.current.value=""
     stateRef.current.value=""
     emailRef.current.value=""
     phoneRef.current.value=""
@@ -117,29 +90,13 @@ const handleSubmit= async (e)=>{
     EnameRef.current.value=""
     ErelationshipRef.current.value=""
     EaddressRef.current.value=""
-    // EcityRef.current.value=""
-    // EstateRef.current.value=""
     EemailRef.current.value=""
     EphoneRef.current.value=""
   
     const genderInputs = genderRef.current.querySelectorAll("input[name='gender']");
     genderInputs.forEach((radio) => (radio.checked = false));
   
-    // const organCheckboxes = organDonateRef.current.querySelectorAll("input[name='organs']");
-    // organCheckboxes.forEach((checkbox) => (checkbox.checked = false));
-    // alert("Form submitted successfully !");
   }
-
-
-
-  //  const storedData = JSON.parse(localStorage.getItem("registrations")) || [];
-  //  storedData.push(formData);
-  //  localStorage.setItem("registrations",JSON.stringify(storedData));
-
-
-
-   
-
 
  
 }
@@ -210,38 +167,6 @@ const handleSubmit= async (e)=>{
               <option value="AB-">AB-</option>
             </select>
           </div>
-{/* 
-          <div ref={organDonateRef} className="flex my-3">
-            <label className="font-semibold text-xl mt-3" htmlFor="organ">Organ that I wish to Donate :</label>
-
-            <div>
-
-            <div>
-            <input className="bg-transparent ml-3 mr-1 " name="organs"  type="checkbox" id="heart" value="heart" />
-            <label className="text-lg" htmlFor="heart">Heart</label>
-
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="lungs" value="lungs" />
-            <label className="text-lg" htmlFor="lungs">Lungs</label>
-
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="liver" value="liver" />
-            <label className="text-lg" htmlFor="liver">Liver</label>
-
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="kidney" value="kidney" />
-            <label className="text-lg" htmlFor="kidney">Kidney</label>
-            </div>
-           
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="pancreas" value="pancreas" />
-            <label className="text-lg" htmlFor="pancreas">Pancreas</label>
-            
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="intestines" value="intestines" />
-            <label className="text-lg" htmlFor="intestines">Intestines</label>
-
-            <input className="bg-transparent ml-3 mr-1 " name="organs" type="checkbox" id="corneas" value="corneas" />
-            <label className="text-lg" htmlFor="corneas">Corneas</label>
-
-            </div>
-
-          </div> */}
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="aadhar">Aadhar number : </label>
@@ -259,26 +184,7 @@ const handleSubmit= async (e)=>{
             type="text" id="address" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Address "  />
           </div>
 
-          {/* <div>
-            <label className="font-semibold text-xl mt-3" htmlFor="city">City : </label>
-            <input 
-            ref={cityRef}
-            type="text" id="city" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter City Name "  />
-          </div> */}
-
-          {/* <div>
-            <label className="font-semibold text-xl mt-3" htmlFor="dist">District : </label>
-            <input 
-            ref={districtRef}
-            type="text" id="dist" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter District"  />
-          </div> */}
-
-          {/* <div>
-            <label className="font-semibold text-xl mt-3" htmlFor="pincode">Pincode : </label>
-            <input 
-            ref={pincodeRef}
-            type="text" id="pincode" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Pincode number"  />
-          </div> */}
+      
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="state">State : </label>
@@ -349,19 +255,6 @@ const handleSubmit= async (e)=>{
             type="text" id="Eaddress" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter Address "  />
           </div>
 
-          {/* <div>
-            <label className="font-semibold text-xl mt-3" htmlFor="Ecity">City : </label>
-            <input
-            ref={EcityRef}
-            type="text" id="Ecity" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter City Name "  />
-          </div> */}
-
-          {/* <div>
-            <label className="font-semibold text-xl mt-3" htmlFor="Estate">State : </label>
-            <input 
-            ref={EstateRef}
-            type="text" id="Estate" className="border-2 bg-transparent text-base mx-3 px-2 rounded-2xl py-1" placeholder="Enter State"  />
-          </div> */}
 
           <div>
             <label className="font-semibold text-xl mt-3" htmlFor="Email">Email Address : </label>

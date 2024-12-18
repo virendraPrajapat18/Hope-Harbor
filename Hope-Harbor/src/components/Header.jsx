@@ -15,7 +15,7 @@ const Header=()=>{
             <div className="logo-container">
               <img className="logo-image " src="hope-Harbor-Logo.png" alt="" />
             </div>
-           <h1 className="text-3xl font-bold ">Hope-Harbor</h1>
+           <h1 className="text-3xl font-bold ">Hope Harbor</h1>
            </div>
            
            

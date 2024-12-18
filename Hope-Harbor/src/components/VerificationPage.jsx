@@ -1,7 +1,6 @@
 import React from "react";
 import './Verification.css';
 import { useRef ,useState } from "react";
-import PersonsDetails from "./personsDetails";
 import {NavLink} from "react-router-dom"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +62,7 @@ const VerifivationPage= ()=>{
     })
 
     const data = await response.json();
-    console.log(data);
+    
 
     if(response.ok){
       setMessage({
@@ -71,12 +70,12 @@ const VerifivationPage= ()=>{
         text : `Verification successful ! Registered user : ${data.donorDetails.personalDetails.name}`,
       })
       setUserData(data);
-      console.log(response.donorDetails);
+      
      
     }else{
       setMessage({type:"error",text:data.message});
       setUserData(null);
-      console.log(response.message)
+     
     }
 
   } catch(error){
@@ -113,8 +112,7 @@ const VerifivationPage= ()=>{
 
      <div className="mb-2">
       <h1>Donor Verification</h1>
-      {/* <button className="text-red-900" onClick={handleLogout}>Logout</button> */}
-      {/* Verification form goes here */}
+      
     </div>
 
         <div className="border-2 border-red-700 p-20 rounded-xl " >

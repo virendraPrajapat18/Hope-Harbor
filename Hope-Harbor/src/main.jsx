@@ -9,7 +9,7 @@ import HomePage from './components/HomePage/HomePage.jsx';
 import RegistrationPage from './components/RegistrationPage.jsx';
 import Layout from './components/Layout.jsx';
 import VerifivationPage from './components/VerificationPage.jsx';
-import PersonsDetails from './components/personsDetails.jsx';
+import PersonsDetails from './components/PersonsDetails.jsx';
 import LoginPage from './components/LoginPage.jsx';
 
 

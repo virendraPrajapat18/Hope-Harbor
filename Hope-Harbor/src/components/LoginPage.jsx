@@ -3,18 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./LoginPage.css"
 
 const LoginPage = () => {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
+
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const usernameRef = useRef("");
   const passwordRef = useRef("");
 
-  // useEffect(() => {
-  //   // Clear inputs when the component loads
-  //   setUsername("");
-  //   setPassword("");
-  // }, []);
+ 
 
   const handleLogin = async (e) => {
     e.preventDefault();
