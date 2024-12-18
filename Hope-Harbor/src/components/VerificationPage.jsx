@@ -53,7 +53,7 @@ const VerifivationPage= ()=>{
   
 
   try{
-    const response = await fetch("http://localhost:5002/verify",{
+    const response = await fetch("https://hope-harbor.onrender.com/verify",{
       method: "POST",
       headers :{
         "Content-Type" : "application/json",

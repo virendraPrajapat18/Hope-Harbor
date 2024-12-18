@@ -60,7 +60,7 @@ const handleSubmit= async (e)=>{
 
  
 
-  const response = await fetch("http://localhost:5002/register",{
+  const response = await fetch("https://hope-harbor.onrender.com/register",{
     method: "POST",
     body : JSON.stringify(formData),
     headers:{
